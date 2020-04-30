@@ -11,14 +11,17 @@ def write_start_file_with_now():
         return start_time
 
 
-if getenv('button', None) is None:
-    with open(filename, "r") as start_file:
-        try:
-            lines = start_file.readlines()
-            start_time = datetime.fromtimestamp(int(lines[0]))
-        except:
-            start_file.close()
-            start_time = write_start_file_with_now()
+if getenv('button') is None:
+    try:
+        with open(filename, "r") as start_file:
+            try:
+                lines = start_file.readlines()
+                start_time = datetime.fromtimestamp(int(lines[0]))
+            except:
+                start_file.close()
+
+    except IOError:
+        start_time = write_start_file_with_now()
 else:
     start_time = write_start_file_with_now()
 
