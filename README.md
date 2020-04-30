@@ -23,9 +23,9 @@ The script saves a file with the unix timestamp of the time to calculate since w
 
 ## TODO
 
- [ ] Configurable filename for keeping timer start, allowing to keep the timer running even after restatrts
- [ ] Be red and sad when >25m, should also be configurable for on/off and the time passed for when to shout at you
- [ ] Better python-foo
- [ ] Customizable formatting of the text
- [ ] Does anyone want this to run for days? hours? if so, support h:mm:ss formats :) and not only m:ss
- [ ] I think that's it, I'm very proud of myself.
+ - [ ] Configurable filename for keeping timer start, allowing to keep the timer running even after restatrts
+ - [ ] Be red and sad when >25m, should also be configurable for on/off and the time passed for when to shout at you
+ - [ ] Better python-foo
+ - [ ] Customizable formatting of the text
+ - [ ] Does anyone want this to run for days? hours? if so, support h:mm:ss formats :) and not only m:ss
+ - [ ] I think that's it, I'm very proud of myself.
