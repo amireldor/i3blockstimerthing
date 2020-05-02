@@ -122,7 +122,7 @@ def format_time(seconds_count):
     return f"{minutes}:{seconds}"
 
 if state == "paused":
-    icon = "(P) "
+    icon = "⏸️ "
 else:
     icon = "⏱ "
 
