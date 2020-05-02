@@ -21,15 +21,16 @@ I put it just before my `[time]` block so I can be happier with my life.
 
 Now restart something and you should see it.
 
-The script saves a file with the unix timestamp of the time to calculate since when it started as well as the timer's state, which in that case just saves the "second count" at pause time. By default, it's writing a file in `/tmp` somewhere to not pollute your home folder (how cnsiderate!). The filepath is configurable via the `I3BLOCKSTIMERTHING_FILE` env var which can be magically passed like this:
+The script saves a file with the timestamp along with the timer's state. This is used to calculate how much time passed since the save and that's what you see on the bar. When paused, it saves the seconds count of the moment along an indication of the paused state. When toggled back, it calculates a new "start" timestamp relative to the seconds count.
+
+This file is by default saved into `/tmp` so I don't pollute your home folder (how considerate of me!). You can change that with an `I3BLOCKSTIMERTHING_FILE` environment variable which is easily passed-through from your i3blocks config:
 
 	[i3blockstimerthing]
 	command=/home/amir/dev/i3blockstimerthing/i3blockstimerthing.py
 	interval=1
 	I3BLOCKSTIMERTHING_FILE=/home/amir/.i3blockstimerthing
 
-Saving the file in your home folder makes it persist between reboots which is super-awesome.
-
+Saving the file in your home folder makes it persist between reboots which is super-awesome(!).
 
 ## TODO
 
