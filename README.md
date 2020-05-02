@@ -2,7 +2,7 @@
 
 Hello. I hacked up this script for i3blocks (or i3xrocks if you use [Regolith](https://regolith-linux.org) like me). What it does is count time up so I know when I was sitting too much and should go stretch and have a glass of water. You can even pause the timer! Wow!
 
-![awesome demonstration](i3blockstimerthing.gif)
+![awesome demonstration](timer2.gif)
 
 Left clicking on it resets the timer. Right or middle click will toggle pause.
 
