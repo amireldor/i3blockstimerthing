@@ -72,14 +72,19 @@ def read_stuff_from_file() -> Tuple[int, str]:
         time_value, state = lines[0].split(' ')
         return int(time_value), state
 
+def file_time_to_seconds_count(file_time: int) -> int:
+    """file_time is usually in unix timestamp"""
+    start_time = datetime.fromtimestamp(file_time)
+    delta = datetime.now() - start_time
+    seconds_count = int(delta.total_seconds())
+    return seconds_count
+
 def read_timer() -> Tuple[int, str]:
     try:
         time_value, state = read_stuff_from_file()
         if state == RUNNING:
             # time_value is a "start time" timestamp
-            start_time = datetime.fromtimestamp(int(time_value))
-            delta = datetime.now() - start_time
-            seconds_count = int(delta.total_seconds())
+            seconds_count = file_time_to_seconds_count(time_value)
         elif state == PAUSED:
             # time_value is the total seconds left
             seconds_count = int(time_value)
@@ -95,9 +100,7 @@ def read_timer() -> Tuple[int, str]:
 def toggle_timer():
     time_value, state = read_stuff_from_file()
     if state == RUNNING:
-        file_time = datetime.fromtimestamp(int(time_value))
-        delta = datetime.now() - file_time
-        seconds_count = int(delta.total_seconds())
+        seconds_count = file_time_to_seconds_count(time_value)
         write_stuff_to_file(str(seconds_count), PAUSED)
 
     elif state == PAUSED:
