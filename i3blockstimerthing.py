@@ -66,33 +66,48 @@ def restart_timer():
     write_stuff_to_file(now_as_str, RUNNING)
     return 0, RUNNING
 
+def read_stuff_from_file() -> Tuple[int, str]:
+    with open(filename, "r") as timer_file:
+        lines = timer_file.readlines()
+        time_value, state = lines[0].split(' ')
+        return int(time_value), state
+
 def read_timer() -> Tuple[int, str]:
     try:
-        with open(filename, "r") as timer_file:
-            lines = timer_file.readlines()
-            time_value, state = lines[0].split(' ')
+        time_value, state = read_stuff_from_file()
+        if state == RUNNING:
+            # time_value is a "start time" timestamp
+            start_time = datetime.fromtimestamp(int(time_value))
+            delta = datetime.now() - start_time
+            seconds_count = int(delta.total_seconds())
+        elif state == PAUSED:
+            # time_value is the total seconds left
+            seconds_count = int(time_value)
+        else:
+            seconds_count = 0
 
-            if state == RUNNING:
-                # time_value is a "start time" timestamp
-                start_time = datetime.fromtimestamp(int(time_value))
-                delta = datetime.now() - start_time
-                seconds_count = int(delta.total_seconds())
-            elif state == PAUSED:
-                # time_value is the total seconds left
-                seconds_count = int(time_value)
-            else:
-                seconds_count = 0
-
-            return seconds_count, state
+        return seconds_count, state
 
     except IOError:
         restart_timer()
         return 0, RUNNING
 
+def toggle_timer():
+    time_value, state = read_stuff_from_file()
+    if state == RUNNING:
+        file_time = datetime.fromtimestamp(int(time_value))
+        delta = datetime.now() - file_time
+        seconds_count = int(delta.total_seconds())
+        write_stuff_to_file(str(seconds_count), PAUSED)
+
+    elif state == PAUSED:
+        now_timestamp = datetime.now().timestamp()
+        new_timer_start_time = int(now_timestamp) - time_value
+        write_stuff_to_file(str(new_timer_start_time), RUNNING)
 
 if button == "1":
     restart_timer()
-elif button == "2":
+elif button == "2" or button == "3":
     toggle_timer()
 
 seconds_count, state = read_timer()
@@ -104,7 +119,7 @@ def format_time(seconds_count):
     return f"{minutes}:{seconds}"
 
 if state == "paused":
-    icon = "(paused)"
+    icon = "(P) "
 else:
     icon = "⏱ "
 
