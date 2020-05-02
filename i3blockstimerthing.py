@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from os import getenv
 from typing import Tuple
 
-filename = "/tmp/i3blockstimerthing.txt"
+filename = getenv("I3BLOCKSTIMERTHING_FILE", "/tmp/i3blockstimerthing.txt")
 button = getenv('button') 
 
 RUNNING = "running"
