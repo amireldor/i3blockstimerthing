@@ -38,5 +38,5 @@ Saving the file in your home folder makes it persist between reboots which is su
  - [ ] Be red and sad when >25m, should also be configurable for on/off and the time passed for when to shout at you
  - [ ] Better python-foo
  - [ ] Customizable formatting of the text
- - [ ] Does anyone want this to run for days? hours? if so, support h:mm:ss formats :) and not only m:ss
+ - [x] Does anyone want this to run for days? hours? if so, support h:mm:ss formats :) and not only m:ss (thanks AdrianoFerrari)
  - [ ] I think that's it, I'm very proud of myself.
