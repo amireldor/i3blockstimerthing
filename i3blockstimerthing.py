@@ -75,9 +75,12 @@ seconds_count, state = read_timer()
 
 
 def format_time(seconds_count):
-    minutes = str(int(seconds_count / 60))
-    seconds = str(int(seconds_count % 60)).zfill(2)
-    return f"{minutes}:{seconds}"
+    if seconds_count < 3600:
+        minutes = str(int(seconds_count / 60))
+        seconds = str(int(seconds_count % 60)).zfill(2)
+        return f"{minutes}:{seconds}"
+    else:
+        return str(timedelta(seconds=seconds_count))
 
 if state == "paused":
     icon = "⏸️ "
