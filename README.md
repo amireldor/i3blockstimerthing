@@ -13,9 +13,9 @@ The Pomodoro Technique is also nice. Use it.
 I believe you have some kind of Python 3.
 Clone/download this script, make sure it's executable, and then in your i3blocks or i3xrocks config do something like this:
 
-	[timerthing]
-	command=/home/amir/dev/i3blockstimerthing/i3blockstimerthing.py
-	interval=1
+    [timerthing]
+    command=/home/amir/dev/i3blockstimerthing/i3blockstimerthing.py
+    interval=1
 
 I put it just before my `[time]` block so I can be happier with my life.
 
@@ -25,18 +25,20 @@ The script saves a file with the timestamp along with the timer's state. This is
 
 This file is by default saved into `/tmp` so I don't pollute your home folder (how considerate of me!). You can change that with an `I3BLOCKSTIMERTHING_FILE` environment variable which is easily passed-through from your i3blocks config:
 
-	[i3blockstimerthing]
-	command=/home/amir/dev/i3blockstimerthing/i3blockstimerthing.py
-	interval=1
-	I3BLOCKSTIMERTHING_FILE=/home/amir/.i3blockstimerthing
+    [i3blockstimerthing]
+    command=/home/amir/dev/i3blockstimerthing/i3blockstimerthing.py
+    interval=1
+    I3BLOCKSTIMERTHING_FILE=/home/amir/.i3blockstimerthing
 
 Saving the file in your home folder makes it persist between reboots which is super-awesome(!).
 
+When the counter is over 25 minutes, it shows as red. You can disable this behavior with something like POMODOR_TIMER=0 in the config file (next to I3BLOCKSTIMERTHING_FILE for example).
+
 ## TODO
 
- - [x] Configurable filename for keeping timer start, allowing to keep the timer running even after restatrts
- - [ ] Be red and sad when >25m, should also be configurable for on/off and the time passed for when to shout at you
- - [ ] Better python-foo
- - [ ] Customizable formatting of the text
- - [x] Does anyone want this to run for days? hours? if so, support h:mm:ss formats :) and not only m:ss (thanks AdrianoFerrari)
- - [ ] I think that's it, I'm very proud of myself.
+- [x] Configurable filename for keeping timer start, allowing to keep the timer running even after restatrts
+- [x] Be red and sad when >25m, should also be configurable for on/off and the time passed for when to shout at you
+- [ ] Better python-foo
+- [ ] Customizable formatting of the text
+- [x] Does anyone want this to run for days? hours? if so, support h:mm:ss formats :) and not only m:ss (thanks AdrianoFerrari)
+- [ ] I think that's it, I'm very proud of myself.
