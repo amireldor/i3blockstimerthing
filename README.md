@@ -32,7 +32,7 @@ This file is by default saved into `/tmp` so I don't pollute your home folder (h
 
 Saving the file in your home folder makes it persist between reboots which is super-awesome(!).
 
-When the counter is over 25 minutes, it shows as red. You can disable this behavior with something like POMODOR_TIMER=0 in the config file (next to I3BLOCKSTIMERTHING_FILE for example).
+When the counter is over 25 minutes, it shows as red. You can disable this behavior with something like POMODORO_TIMER=0 in the config file (next to I3BLOCKSTIMERTHING_FILE for example).
 
 ## TODO
 
