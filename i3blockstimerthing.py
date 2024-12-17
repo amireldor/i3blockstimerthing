@@ -10,7 +10,8 @@ from os import getenv
 from typing import Tuple
 
 filename = getenv("I3BLOCKSTIMERTHING_FILE", "/tmp/i3blockstimerthing.txt")
-button = getenv('button') 
+button = getenv("button")
+pomodoro_warning = getenv("POMODORO_WARNING", "1")
 
 RUNNING = "running"
 PAUSED = "paused"
@@ -87,5 +88,12 @@ if state == "paused":
 else:
     icon = "⏱ "
 
-time_display = icon + format_time(seconds_count)
+def wrap_with_color(text, color, background):
+    return f'<span color="{color}" bgcolor="{background}">{text}</span>'
+
+to_display = format_time(seconds_count)
+if seconds_count >= 25 * 1000 and pomodoro_warning == '1':
+    to_display = wrap_with_color(to_display, "white", "#ff4f4f")
+
+time_display = icon + to_display
 print(time_display)
