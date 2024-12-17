@@ -92,7 +92,7 @@ def wrap_with_color(text, color, background):
     return f'<span color="{color}" bgcolor="{background}">{text}</span>'
 
 to_display = format_time(seconds_count)
-if seconds_count >= 25 * 1000 and pomodoro_warning == '1':
+if seconds_count >= 25 * 60 and pomodoro_warning == '1':
     to_display = wrap_with_color(to_display, "white", "#ff4f4f")
 
 time_display = icon + to_display
